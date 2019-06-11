@@ -12,4 +12,18 @@ class Api::V1::MoviesController < ApplicationController
     render json: @movie
   end
 
+  # POST /movies
+  def create
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      render json: @movie, status: :created, location: api_v1_movie_url(@movie)
+    else
+      render json: @movie.errors, status: :unprocessable_entity
+    end
+  end
+
+  def movie_params
+    params.permit(:id, :title, :rating)
+  end
+
 end
