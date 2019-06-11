@@ -148,7 +148,7 @@ development:
 test:
   clients:
     default:
-      database: algolia_test
+      database: algolia
       hosts:
         - localhost:27017
       options:
