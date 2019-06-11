@@ -1,5 +1,11 @@
 class Movie
   include Mongoid::Document
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :title
+    searchableAttributes ['title']
+  end
 
   field :title, type: String
   field :alternative_titles, type: Array
