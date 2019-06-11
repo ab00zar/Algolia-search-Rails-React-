@@ -21,7 +21,7 @@ describe 'Movies API', type: :request do
 
             it 'returns the movie' do
                 expect(json).not_to be_empty
-                expect(json['id']).to eq(439378210)
+                expect(json['_id']).to eq("439378210")
             end
 
             it 'return status code 200' do
