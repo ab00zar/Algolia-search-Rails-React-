@@ -32,12 +32,20 @@ describe 'Movies API', type: :request do
 
     describe 'POST /api/v1/movies' do
         context 'when the params are valid' do
-            let(:valid_params) { {title: 'My New Movie', rating: 4} }
+            let(:valid_params) { {id: 1, title: 'My New Movie', rating: 4} }
             before { post '/api/v1/movies', params: valid_params }
 
             it 'creates a movie' do
                 expect(json['title']).to eq('My New Movie')
             end
+        end
+    end
+
+    describe 'DELETE /api/v1/movies/:id' do
+        before { delete '/api/v1/movies/1'}
+
+        it 'returns status code 204' do
+            expect(response).to have_http_status(204)
         end
     end
 end 
