@@ -1,5 +1,7 @@
 class Api::V1::MoviesController < ApplicationController
 
+  before_action :set_movie, only: [:show, :destroy]
+
   # GET /movies
   def index
     @movies = Movie.all
@@ -8,7 +10,6 @@ class Api::V1::MoviesController < ApplicationController
 
   # GET /movies/:id
   def show
-    @movie = Movie.find(params[:id])
     render json: @movie
   end
 
@@ -24,8 +25,13 @@ class Api::V1::MoviesController < ApplicationController
 
   # DELETE /movies/:id
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
+  end
+
+  private
+
+  def set_movie
+    @movie = Movie.find(params[:id])
   end
 
   def movie_params
