@@ -2,7 +2,7 @@ class Api::V1::MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all 
+    @movies = Movie.all
     render json: @movies
   end
 
@@ -20,6 +20,12 @@ class Api::V1::MoviesController < ApplicationController
     else
       render json: @movie.errors, status: :unprocessable_entity
     end
+  end
+
+  # DELETE /movies/:id
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
   end
 
   def movie_params
