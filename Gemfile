@@ -48,3 +48,6 @@ gem 'mongoid', '~> 6.1.0'
 
 # Algolia search client API
 gem "algoliasearch-rails"
+
+# Bootstrap Ruby Gem
+gem 'bootstrap', '~> 4.3.1'
