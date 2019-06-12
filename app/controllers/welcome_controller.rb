@@ -1,4 +1,5 @@
 class WelcomeController < ActionController::Base
+    
     before_action :force_json, only: :search
 
     def index 
