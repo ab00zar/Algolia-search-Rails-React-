@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This goal of this project is implementing Algolia search using Rails and React.
 
-Things you may want to cover:
+## Database
 
-* Ruby version
+MongoDB is used for this project. As the input were a json file including a list of movies, `mongoimport` is used to import the data into the database. In addition, `objectID` field is used as the unique id of the movies (documents in the MongoDB). Here are the commands:
+`
+mongoimport -d algolia -c temp --file Projects/movies.json --jsonArray
 
-* System dependencies
+db.temp.find().forEach(function (document) { document._id = document.objectID;     db.movies.insert(document) })
 
-* Configuration
+db.movies.update({}, {$unset: {objectID: ""}})
+`
 
-* Database creation
+## Backend
 
-* Database initialization
+The backend part is developed as an API having these endpoints:
 
-* How to run the test suite
+1) To index all movies: `GET` /movies
 
-* Services (job queues, cache servers, search engines, etc.)
+2) To show a specific movie: `GET` /movies/:id
 
-* Deployment instructions
+3) To create a new movie: `POST` /movies
 
-* ...
+4) To delete a specific movie: `DELETE` /movies/:id
+
+## RSpec Tests
+
+Some RSpec tests are added in the spec folder to test the API (TDD & non-TDD ways)
+
+## Frontend
+
+The fronted is a SPA which enables us to search among the movies by their title and also remove any of them if desired.
+
