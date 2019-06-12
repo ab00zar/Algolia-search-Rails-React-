@@ -160,7 +160,4 @@ test:
 production:
   clients:
     default:
-      uri: ENV['MONGODB_HOST']
-        options:
-          user: ENV['MONGODB_USER']
-          password: ENV['MONGODB_PASSWORD'] 
+      uri: <%= ENV['MONGODB_URI'] %>
