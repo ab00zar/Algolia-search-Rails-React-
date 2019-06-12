@@ -43,8 +43,18 @@ class Welcome extends Component {
           type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5>{ response.title }</h5>
-        <p>Rating: { response.rating }</p>
+        <div className="row">
+          <div className="col-sm">
+            <h5>{ response.title }</h5>
+            <p>Rating: { response.rating }</p>
+            <p>Year: { response.year }</p>
+            <p>Genre: {response.genre.map((genre) => genre).reduce((prev, curr) => [prev, ', ', curr])}</p>
+          </div>
+          <div className="col-sm">
+            <img src={ response.image} />
+          </div>
+        </div>
+        
       </div>
     });
 
