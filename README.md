@@ -5,13 +5,13 @@ This goal of this project is implementing Algolia search using Rails and React.
 ## Database
 
 MongoDB is used for this project. As the input were a json file including a list of movies, `mongoimport` is used to import the data into the database. In addition, `objectID` field is used as the unique id of the movies (documents in the MongoDB). Here are the commands:
-`
-mongoimport -d algolia -c temp --file Projects/movies.json --jsonArray
 
-db.temp.find().forEach(function (document) { document._id = document.objectID;     db.movies.insert(document) })
 
-db.movies.update({}, {$unset: {objectID: ""}})
-`
+`mongoimport -d algolia -c temp --file Projects/movies.json --jsonArray`
+
+`db.temp.find().forEach(function (document) { document._id = document.objectID;     db.movies.insert(document) })`
+
+`db.movies.update({}, {$unset: {objectID: ""}})`
 
 ## Backend
 
