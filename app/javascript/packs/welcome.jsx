@@ -36,7 +36,10 @@ class Welcome extends Component {
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
       return <div key={index} className="movie">
-        <button onClick={() => this.removeMovie(response.id)} 
+        <button onClick={() => {
+          if (window.confirm('Are you sure you wish to delete this movie?')) 
+            this.removeMovie(response.id)
+          }} 
           type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
