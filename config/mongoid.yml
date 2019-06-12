@@ -158,6 +158,9 @@ test:
 
 
 production:
-  sessions:
+  clients:
     default:
       uri: ENV['MONGODB_URI']
+        options:
+          user: ENV['MONGODB_USER']
+          password: ENV['MONGODB_PASSWORD'] 
