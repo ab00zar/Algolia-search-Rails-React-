@@ -33,6 +33,8 @@ Some RSpec tests are added in the spec folder to test the API (TDD & non-TDD way
 
 The fronted is a SPA which enables us to search among the movies by their title and also remove any of them if desired.
 
+* It is also possible to find movies by their alternative titles.
+
 ## Deployment
 
 The project is deployed on Heroku using mLap MongoDB database service and is accessible here:
