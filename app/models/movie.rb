@@ -3,8 +3,8 @@ class Movie
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :title
-    searchableAttributes ['title']
+    attribute :title, :alternative_titles
+    searchableAttributes ['title', 'alternative_titles']
   end
 
   field :title, type: String
