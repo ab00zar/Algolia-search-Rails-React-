@@ -1,6 +1,7 @@
 class Api::V1::MoviesController < ApplicationController
 
   before_action :set_movie, only: [:show, :destroy]
+  after_action :reindex, only: :create
 
   # GET /movies
   def index
@@ -29,6 +30,9 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   private
+  def reindex
+    Movie.reindex!
+  end
 
   def set_movie
     @movie = Movie.find(params[:id])
